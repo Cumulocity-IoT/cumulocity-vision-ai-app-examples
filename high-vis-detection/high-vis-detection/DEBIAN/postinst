@@ -1,0 +1,47 @@
+#!/bin/sh
+set -e
+USER="tedge"
+LOG_DIR="/var/log/tedge/vision-apps"
+LOG_FILE="${LOG_DIR}/high-vis-detection-app.log"
+
+#assign the list of groups to the tegde use
+sudo usermod -aG video,input,render,i2c,spi,gpio,sudo,adm,dialout "$USER"
+echo "user group assigned to use $USER"
+
+SUDO_LINE='tedge ALL=NOPASSWD: /bin/systemctl restart high-vis-detection-app.service'
+
+for FILE in /etc/sudoers.d/tedge /etc/sudoers.d/tedge-nopasswd; do
+    # Create the file if it doesn't exist
+    sudo touch "$FILE"
+
+    # Check if the line already exists
+    if ! sudo grep -Fxq "$SUDO_LINE" "$FILE"; then
+        echo "$SUDO_LINE" | sudo tee -a "$FILE" > /dev/null
+        echo "Appended to $FILE"
+    else
+        echo "Entry already exists in $FILE"
+    fi
+done
+
+#create log file and change permission
+sudo install -o "$USER" -g "$USER" -d -m 755 "$LOG_DIR"
+# Create the log file if it doesn't exist
+if [ ! -f "$LOG_FILE" ]; then
+    sudo touch "$LOG_FILE"
+fi
+
+# Set correct ownership and permissions
+sudo chown "$USER":"$USER" "$LOG_FILE"
+sudo chmod 644 "$LOG_FILE"
+
+sudo chmod +x /usr/local/bin/high-vis-detection-app/*
+
+# Ensure the service file is copied to the correct location
+install -m 644 /usr/lib/systemd/system/high-vis-detection-app.service /etc/systemd/system/high-vis-detection-app.service
+
+# Reload systemd
+systemctl daemon-reload
+
+# Enable and start the service
+systemctl enable high-vis-detection-app.service
+systemctl start high-vis-detection-app.service

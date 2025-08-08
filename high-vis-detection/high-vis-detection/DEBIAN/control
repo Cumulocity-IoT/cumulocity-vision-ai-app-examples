@@ -1,0 +1,8 @@
+Package: high-vis-detection-app
+Version: 0.0.13
+Section: utils
+Priority: optional
+Architecture: all
+Maintainer: tobias.sommer@cumulocity.com
+Depends: python3, python3-paho-mqtt, systemd
+Description: App for high vis vision model
