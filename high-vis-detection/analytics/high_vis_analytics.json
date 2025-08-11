@@ -1,0 +1,926 @@
+{
+    "id": "626807",
+    "templateParameters": [
+        {
+            "semanticType": "c8y_deviceIdOrCurrentDeviceOrGroup",
+            "id": "MP_b0oad7yau",
+            "name": "camera",
+            "typeDisplayName": {
+                "semanticType": "c8y_deviceIdOrCurrentDeviceOrGroup",
+                "typeName": "c8y_deviceIdOrCurrentDeviceOrGroup"
+            },
+            "type": "string",
+            "description": "",
+            "optional": false
+        }
+    ],
+    "tags": [],
+    "builderVersion": "26.60.0+20250311-1931-698c05fdb",
+    "builderModel": {
+        "nodeDataArray": [
+            {
+                "id": "apama.analyticskit.blocks.cumulocity.DeviceMeasurementInput",
+                "key": -1,
+                "type": "C8YDevice Block",
+                "location": "-240 -80",
+                "blockType": "c8y_Input",
+                "parameters": [
+                    {
+                        "id": "deviceId",
+                        "c8y_type": "c8y_deviceOrGroupId",
+                        "value": {
+                            "id": "MP_b0oad7yau",
+                            "type": "TemplateParameterReference"
+                        }
+                    },
+                    {
+                        "id": "fragmentSeries",
+                        "c8y_type": "c8y_fragmentSeries_KPI_supportedMeasurements_DataPoints",
+                        "value": "people.people"
+                    },
+                    {
+                        "id": "ignoreTimestamp",
+                        "value": false
+                    }
+                ],
+                "categoryId": "Input"
+            },
+            {
+                "id": "apama.analyticskit.blocks.cumulocity.DeviceMeasurementInput",
+                "key": -2,
+                "type": "C8YDevice Block",
+                "location": "-256 352",
+                "blockType": "c8y_Input",
+                "parameters": [
+                    {
+                        "id": "deviceId",
+                        "c8y_type": "c8y_deviceOrGroupId",
+                        "value": {
+                            "id": "MP_b0oad7yau",
+                            "type": "TemplateParameterReference"
+                        }
+                    },
+                    {
+                        "id": "fragmentSeries",
+                        "c8y_type": "c8y_fragmentSeries_KPI_supportedMeasurements_DataPoints",
+                        "value": "vests.vests"
+                    },
+                    {
+                        "id": "ignoreTimestamp",
+                        "value": false
+                    }
+                ],
+                "categoryId": "Input"
+            },
+            {
+                "id": "apama.analyticsbuilder.blocks.DiscreteStatistics",
+                "key": -4,
+                "type": "Analytics Block",
+                "location": "-40 -32",
+                "categoryId": "Aggregates",
+                "parameters": []
+            },
+            {
+                "id": "apama.analyticsbuilder.blocks.DiscreteStatistics",
+                "key": -5,
+                "type": "Analytics Block",
+                "location": "-48 400",
+                "categoryId": "Aggregates",
+                "parameters": []
+            },
+            {
+                "id": "apama.analyticskit.blocks.cumulocity.CreateMeasurement",
+                "key": -6,
+                "type": "C8YDevice Block",
+                "location": "488 -80",
+                "blockType": "c8y_Output",
+                "parameters": [
+                    {
+                        "id": "deviceId",
+                        "c8y_type": "c8y_deviceIdOrCurrentDevice",
+                        "value": {
+                            "id": "MP_b0oad7yau",
+                            "type": "TemplateParameterReference"
+                        }
+                    },
+                    {
+                        "id": "fragment",
+                        "value": "current_hour"
+                    },
+                    {
+                        "id": "series",
+                        "value": "people"
+                    }
+                ],
+                "categoryId": "Output"
+            },
+            {
+                "id": "apama.analyticskit.blocks.cumulocity.CreateMeasurement",
+                "key": -7,
+                "type": "C8YDevice Block",
+                "location": "488 552",
+                "blockType": "c8y_Output",
+                "parameters": [
+                    {
+                        "id": "deviceId",
+                        "c8y_type": "c8y_deviceIdOrCurrentDevice",
+                        "value": {
+                            "id": "MP_b0oad7yau",
+                            "type": "TemplateParameterReference"
+                        }
+                    },
+                    {
+                        "id": "fragment",
+                        "value": "hourly_sum"
+                    },
+                    {
+                        "id": "series",
+                        "value": "vests"
+                    }
+                ],
+                "categoryId": "Output"
+            },
+            {
+                "id": "apama.analyticskit.blocks.cumulocity.CreateMeasurement",
+                "key": -8,
+                "type": "C8YDevice Block",
+                "location": "488 120",
+                "blockType": "c8y_Output",
+                "parameters": [
+                    {
+                        "id": "deviceId",
+                        "c8y_type": "c8y_deviceIdOrCurrentDevice",
+                        "value": {
+                            "id": "MP_b0oad7yau",
+                            "type": "TemplateParameterReference"
+                        }
+                    },
+                    {
+                        "id": "fragment",
+                        "value": "hourly_sum"
+                    },
+                    {
+                        "id": "series",
+                        "value": "people"
+                    }
+                ],
+                "categoryId": "Output"
+            },
+            {
+                "id": "apama.analyticskit.blocks.cumulocity.CreateMeasurement",
+                "key": -9,
+                "type": "C8YDevice Block",
+                "location": "488 344",
+                "blockType": "c8y_Output",
+                "parameters": [
+                    {
+                        "id": "deviceId",
+                        "c8y_type": "c8y_deviceIdOrCurrentDevice",
+                        "value": {
+                            "id": "MP_b0oad7yau",
+                            "type": "TemplateParameterReference"
+                        }
+                    },
+                    {
+                        "id": "fragment",
+                        "value": "current_hour"
+                    },
+                    {
+                        "id": "series",
+                        "value": "vests"
+                    }
+                ],
+                "categoryId": "Output"
+            },
+            {
+                "id": "apama.analyticskit.blocks.core.CronTimer",
+                "key": -10,
+                "type": "Analytics Block",
+                "location": "-504 168",
+                "categoryId": "Utilities",
+                "parameters": [
+                    {
+                        "id": "seconds",
+                        "value": "0"
+                    },
+                    {
+                        "id": "minutes",
+                        "value": "0"
+                    },
+                    {
+                        "id": "hours",
+                        "value": "*"
+                    },
+                    {
+                        "id": "daysOfMonth",
+                        "value": "*"
+                    },
+                    {
+                        "id": "months",
+                        "value": "*"
+                    },
+                    {
+                        "id": "daysOfWeek",
+                        "value": "*"
+                    }
+                ]
+            },
+            {
+                "id": "apama.analyticskit.blocks.core.TimeDelay",
+                "key": -11,
+                "type": "Analytics Block",
+                "location": "-264 16",
+                "categoryId": "Flow Manipulation",
+                "parameters": [
+                    {
+                        "id": "delaySecs",
+                        "value": "0.001"
+                    }
+                ]
+            },
+            {
+                "id": "apama.analyticskit.blocks.core.Expression",
+                "key": -12,
+                "type": "Analytics Block",
+                "location": "280 816",
+                "categoryId": "Calculations",
+                "parameters": [
+                    {
+                        "id": "expression",
+                        "value": "input1 - input2"
+                    }
+                ]
+            },
+            {
+                "id": "apama.analyticskit.blocks.cumulocity.CreateMeasurement",
+                "key": -13,
+                "type": "C8YDevice Block",
+                "location": "728 784",
+                "blockType": "c8y_Output",
+                "parameters": [
+                    {
+                        "id": "deviceId",
+                        "c8y_type": "c8y_deviceIdOrCurrentDevice",
+                        "value": {
+                            "id": "MP_b0oad7yau",
+                            "type": "TemplateParameterReference"
+                        }
+                    },
+                    {
+                        "id": "fragment",
+                        "value": "current_hour"
+                    },
+                    {
+                        "id": "series",
+                        "value": "non_compliant"
+                    }
+                ],
+                "categoryId": "Output"
+            },
+            {
+                "id": "apama.analyticskit.blocks.cumulocity.CreateMeasurement",
+                "key": -14,
+                "type": "C8YDevice Block",
+                "location": "728 992",
+                "blockType": "c8y_Output",
+                "parameters": [
+                    {
+                        "id": "deviceId",
+                        "c8y_type": "c8y_deviceIdOrCurrentDevice",
+                        "value": {
+                            "id": "MP_b0oad7yau",
+                            "type": "TemplateParameterReference"
+                        }
+                    },
+                    {
+                        "id": "fragment",
+                        "value": "hourly_sum"
+                    },
+                    {
+                        "id": "series",
+                        "value": "non_compliant"
+                    }
+                ],
+                "categoryId": "Output"
+            },
+            {
+                "id": "apama.analyticskit.blocks.core.Combiner",
+                "key": -15,
+                "type": "Analytics Block",
+                "location": "224 48",
+                "categoryId": "Flow Manipulation",
+                "parameters": [
+                    {
+                        "id": "mode",
+                        "value": "Latest Updated"
+                    }
+                ]
+            },
+            {
+                "id": "apama.analyticsbuilder.blocks.ConstantValue",
+                "key": -16,
+                "type": "Analytics Block",
+                "location": "-40 144",
+                "categoryId": "Utilities",
+                "parameters": [
+                    {
+                        "id": "value",
+                        "c8y_type": "pab_multiLine",
+                        "value": "0"
+                    },
+                    {
+                        "id": "type",
+                        "value": "float"
+                    }
+                ]
+            },
+            {
+                "id": "apama.analyticskit.blocks.core.Combiner",
+                "key": -17,
+                "type": "Analytics Block",
+                "location": "216 480",
+                "categoryId": "Flow Manipulation",
+                "parameters": [
+                    {
+                        "id": "mode",
+                        "value": "Latest Updated"
+                    }
+                ]
+            },
+            {
+                "id": "apama.analyticsbuilder.blocks.ConstantValue",
+                "key": -18,
+                "type": "Analytics Block",
+                "location": "-48 584",
+                "categoryId": "Utilities",
+                "parameters": [
+                    {
+                        "id": "value",
+                        "c8y_type": "pab_multiLine",
+                        "value": "0"
+                    },
+                    {
+                        "id": "type",
+                        "value": "float"
+                    }
+                ]
+            },
+            {
+                "id": "apama.analyticskit.blocks.core.Combiner",
+                "key": -19,
+                "type": "Analytics Block",
+                "location": "488 920",
+                "categoryId": "Flow Manipulation",
+                "parameters": [
+                    {
+                        "id": "mode",
+                        "value": "Latest Updated"
+                    }
+                ]
+            },
+            {
+                "id": "apama.analyticsbuilder.blocks.ConstantValue",
+                "key": -20,
+                "type": "Analytics Block",
+                "location": "280 976",
+                "categoryId": "Utilities",
+                "parameters": [
+                    {
+                        "id": "value",
+                        "c8y_type": "pab_multiLine",
+                        "value": "0"
+                    },
+                    {
+                        "id": "type",
+                        "value": "float"
+                    }
+                ]
+            }
+        ],
+        "linkDataArray": [
+            {
+                "outputId": "value",
+                "to": -4,
+                "from": -1,
+                "inputId": "measurementValue",
+                "points": [
+                    -152,
+                    -80,
+                    -137,
+                    -80,
+                    -137,
+                    -80,
+                    -143,
+                    -80,
+                    -143,
+                    -80,
+                    -128,
+                    -80
+                ]
+            },
+            {
+                "outputId": "value",
+                "to": -5,
+                "from": -2,
+                "inputId": "measurementValue",
+                "points": [
+                    -168,
+                    352,
+                    -153,
+                    352,
+                    -152,
+                    352,
+                    -152,
+                    352,
+                    -151,
+                    352,
+                    -136,
+                    352
+                ]
+            },
+            {
+                "outputId": "value",
+                "to": -6,
+                "from": -4,
+                "inputId": "sum",
+                "points": [
+                    48,
+                    -152,
+                    63,
+                    -152,
+                    224,
+                    -152,
+                    224,
+                    -152,
+                    385,
+                    -152,
+                    400,
+                    -152
+                ]
+            },
+            {
+                "outputId": "send",
+                "to": -8,
+                "from": -10,
+                "inputId": "tick",
+                "points": [
+                    -416,
+                    168,
+                    -401,
+                    168,
+                    -401,
+                    168,
+                    -401,
+                    180,
+                    324,
+                    180,
+                    324,
+                    96,
+                    385,
+                    96,
+                    400,
+                    96
+                ]
+            },
+            {
+                "outputId": "send",
+                "to": -7,
+                "from": -10,
+                "inputId": "tick",
+                "points": [
+                    -416,
+                    168,
+                    -401,
+                    168,
+                    -401,
+                    168,
+                    -401,
+                    180,
+                    316,
+                    180,
+                    316,
+                    528,
+                    385,
+                    528,
+                    400,
+                    528
+                ]
+            },
+            {
+                "outputId": "value",
+                "to": -9,
+                "from": -5,
+                "inputId": "sum",
+                "points": [
+                    40,
+                    280,
+                    55,
+                    280,
+                    220,
+                    280,
+                    220,
+                    272,
+                    385,
+                    272,
+                    400,
+                    272
+                ]
+            },
+            {
+                "outputId": "value",
+                "to": -11,
+                "from": -10,
+                "inputId": "tick",
+                "points": [
+                    -416,
+                    168,
+                    -401,
+                    168,
+                    -384,
+                    168,
+                    -384,
+                    16,
+                    -367,
+                    16,
+                    -352,
+                    16
+                ]
+            },
+            {
+                "outputId": "reset",
+                "to": -4,
+                "from": -11,
+                "inputId": "delayedValue",
+                "points": [
+                    -176,
+                    16,
+                    -161,
+                    16,
+                    -152,
+                    16,
+                    -152,
+                    16,
+                    -143,
+                    16,
+                    -128,
+                    16
+                ]
+            },
+            {
+                "outputId": "reset",
+                "to": -5,
+                "from": -11,
+                "inputId": "delayedValue",
+                "points": [
+                    -176,
+                    16,
+                    -161,
+                    16,
+                    -156,
+                    16,
+                    -156,
+                    448,
+                    -151,
+                    448,
+                    -136,
+                    448
+                ]
+            },
+            {
+                "outputId": "input2",
+                "to": -12,
+                "from": -5,
+                "inputId": "sum",
+                "points": [
+                    40,
+                    280,
+                    55,
+                    280,
+                    116,
+                    280,
+                    116,
+                    768,
+                    177,
+                    768,
+                    192,
+                    768
+                ]
+            },
+            {
+                "outputId": "input1",
+                "to": -12,
+                "from": -4,
+                "inputId": "sum",
+                "points": [
+                    48,
+                    -152,
+                    63,
+                    -152,
+                    63,
+                    -152,
+                    63,
+                    720,
+                    177,
+                    720,
+                    192,
+                    720
+                ]
+            },
+            {
+                "outputId": "value",
+                "to": -13,
+                "from": -12,
+                "inputId": "value",
+                "points": [
+                    368,
+                    816,
+                    383,
+                    816,
+                    383,
+                    816,
+                    383,
+                    712,
+                    625,
+                    712,
+                    640,
+                    712
+                ]
+            },
+            {
+                "outputId": "send",
+                "to": -14,
+                "from": -10,
+                "inputId": "tick",
+                "points": [
+                    -416,
+                    168,
+                    -401,
+                    168,
+                    -401,
+                    168,
+                    -401,
+                    228,
+                    588,
+                    228,
+                    588,
+                    968,
+                    625,
+                    968,
+                    640,
+                    968
+                ]
+            },
+            {
+                "outputId": "value1",
+                "to": -15,
+                "from": -4,
+                "inputId": "sum",
+                "points": [
+                    48,
+                    -152,
+                    63,
+                    -152,
+                    92,
+                    -152,
+                    92,
+                    -48,
+                    121,
+                    -48,
+                    136,
+                    -48
+                ]
+            },
+            {
+                "outputId": "value",
+                "to": -8,
+                "from": -15,
+                "inputId": "combined",
+                "points": [
+                    312,
+                    48,
+                    327,
+                    48,
+                    356,
+                    48,
+                    356,
+                    48,
+                    385,
+                    48,
+                    400,
+                    48
+                ]
+            },
+            {
+                "outputId": "trigger",
+                "to": -16,
+                "from": -11,
+                "inputId": "delayedValue",
+                "points": [
+                    -176,
+                    16,
+                    -161,
+                    16,
+                    -152,
+                    16,
+                    -152,
+                    144,
+                    -143,
+                    144,
+                    -128,
+                    144
+                ]
+            },
+            {
+                "outputId": "value2",
+                "to": -15,
+                "from": -16,
+                "inputId": "output",
+                "points": [
+                    48,
+                    144,
+                    63,
+                    144,
+                    92,
+                    144,
+                    92,
+                    0,
+                    121,
+                    0,
+                    136,
+                    0
+                ]
+            },
+            {
+                "outputId": "value",
+                "to": -7,
+                "from": -17,
+                "inputId": "combined",
+                "points": [
+                    304,
+                    480,
+                    319,
+                    480,
+                    352,
+                    480,
+                    352,
+                    480,
+                    385,
+                    480,
+                    400,
+                    480
+                ]
+            },
+            {
+                "outputId": "value2",
+                "to": -17,
+                "from": -18,
+                "inputId": "output",
+                "points": [
+                    40,
+                    584,
+                    55,
+                    584,
+                    84,
+                    584,
+                    84,
+                    432,
+                    113,
+                    432,
+                    128,
+                    432
+                ]
+            },
+            {
+                "outputId": "value1",
+                "to": -17,
+                "from": -5,
+                "inputId": "sum",
+                "points": [
+                    40,
+                    280,
+                    55,
+                    280,
+                    84,
+                    280,
+                    84,
+                    384,
+                    113,
+                    384,
+                    128,
+                    384
+                ]
+            },
+            {
+                "outputId": "trigger",
+                "to": -18,
+                "from": -11,
+                "inputId": "delayedValue",
+                "points": [
+                    -176,
+                    16,
+                    -161,
+                    16,
+                    -156,
+                    16,
+                    -156,
+                    584,
+                    -151,
+                    584,
+                    -136,
+                    584
+                ]
+            },
+            {
+                "outputId": "value",
+                "to": -14,
+                "from": -19,
+                "inputId": "combined",
+                "points": [
+                    576,
+                    920,
+                    591,
+                    920,
+                    608,
+                    920,
+                    608,
+                    920,
+                    625,
+                    920,
+                    640,
+                    920
+                ]
+            },
+            {
+                "outputId": "value1",
+                "to": -19,
+                "from": -12,
+                "inputId": "value",
+                "points": [
+                    368,
+                    816,
+                    383,
+                    816,
+                    384,
+                    816,
+                    384,
+                    824,
+                    385,
+                    824,
+                    400,
+                    824
+                ]
+            },
+            {
+                "outputId": "value2",
+                "to": -19,
+                "from": -20,
+                "inputId": "output",
+                "points": [
+                    368,
+                    976,
+                    383,
+                    976,
+                    384,
+                    976,
+                    384,
+                    872,
+                    385,
+                    872,
+                    400,
+                    872
+                ]
+            },
+            {
+                "outputId": "trigger",
+                "to": -20,
+                "from": -11,
+                "inputId": "delayedValue",
+                "points": [
+                    -176,
+                    16,
+                    -161,
+                    16,
+                    -164,
+                    16,
+                    -164,
+                    16,
+                    -156,
+                    16,
+                    -156,
+                    976,
+                    177,
+                    976,
+                    192,
+                    976
+                ]
+            }
+        ]
+    },
+    "name": "HighVisCount",
+    "type": "c8y_PublicAnalyticsBuilderModel",
+    "c8y_analyticsModel": {},
+    "userInterfaceProperties": {
+        "displayGrid": false
+    },
+    "description": ""
+}

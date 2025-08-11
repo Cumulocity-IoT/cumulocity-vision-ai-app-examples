@@ -1,5 +1,5 @@
 Package: high-vis-detection-app
-Version: 0.0.13
+Version: 1.0.0
 Section: utils
 Priority: optional
 Architecture: all

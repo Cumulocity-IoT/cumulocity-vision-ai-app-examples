@@ -2,11 +2,47 @@
 
 ## 🤖 Model
 
-For the high-vis detection task, we recommend using a pre-trained object detection model. These models are efficient and have been trained on large datasets, making them a great starting point.
+The model for this demo is a detection model that recognized people and high-vis vests.
+
+## 📚 Installing the Analytics
+
+For this example the analytics flow has only the camera as a parameter. Ensure that you select not the Raspberry Pi but the camera child device (as this is where the data is generated).
+
+## The Data
+
+### Data of the camera
+
+The AI application will track objects while they are in the FoV. When an object (person or vest) enters the FoV it will send a measurement with the amount of newly entered people and vests to Cumulocity (unless two objects enter at the exact same frame the measurement values are therefore 0 and 1).
+There is no logic to "remember" objects if they leave the FoV, therefore if you leave the FoV and re-enter it you are counted again.
+Data is only sent if an object enters. There is a debouncing to ensure the object is at least a certain amount of frames inside before counting it.
+
+| Data point | Explanation | Fragment => Series |
+| --- | --- | --- |
+| **People** | The amount of people entering the FoV in that frame. | people => people |
+| **Vests** | The amount of vests entering the FoV in that frame. | vests => vests |
+
+### Data of the analytics
+
+The analytics flow of this demo will generate us hourly statistics of the objects. It will count the people, the people with vests and the people without vests in each hour.
+
+| Data point | Explanation | Fragment => Series |
+| --- | --- | --- |
+| **People Count Current Hour** | The total amount of people entering the FoV in the current hour. Resets at the top of the hour. | current_hour => people |
+| **People Count Hour Summary** | The total amount of people that entered the FoV in the last hour. Created at the top of the hour. | hourly_sum => people |
+| **People with Vests Count Current Hour** | The amount of people with Vests entering the FoV in the current hour. Resets at the top of the hour. | current_hour => vests |
+| **People with Vests Count Hour Summary** | The amount of people with Vests that entered the FoV in the last hour. Created at the top of the hour. | hourly_sum => vests |
+| **People without Vests Count Current Hour** | The amount of people without Vests entering the FoV in the current hour. Resets at the top of the hour. | current_hour => non_compliant |
+| **People without Vests Count Hour Summary** | The amount of people without Vests that entered the FoV in the last hour. Created at the top of the hour. | hourly_sum => non_compliant |
+
+## 🖼️ Example Dashboard
+
+With the above data you have information about the current hour and hourly statistics that you can display easily on a dashboard. Below an example.
+
+![HighVisDashboard](../images/highVisDashboard.jpg)
 
 ## 📦 Debian Package Build
 
-To easily distribute and install the application on Debian-based systems, we will package it as a `.deb` file.
+In case you modified the script here is a short guide how to build the debian again.
 
 ### Prerequisites
 
@@ -22,50 +58,4 @@ To easily distribute and install the application on Debian-based systems, we wil
 
 ## ☁️ App Installation
 
-Once you have the Debian package, you can upload it to the software repository of your Cumulocity tenant.
-
-### Steps
-
-1.  **Log in to your Cumulocity tenant.**
-2.  Navigate to the **Devicemanagement** application.
-3.  In the left-hand menu, go to **Management > Software Repository**.
-4.  Click **Add software** in the top-right corner.
-5.  As software type you should use `apt` and as the version it has to match the version of the debian package (see the file DEBIAN/control)
-6.  Drag and drop your `high-vis-detection.deb` file or browse to select it.
-7.  Once uploaded, the software will be available in your tenant for deployment to devices.
-
-## 📊 Analytics Installation in Cumulocity
-
-To process the data from your high-heels detection app, you can use Cumulocity's **Analytics Builder**.
-
-### Steps
-
-1.  **Open the Analytics Builder:**
-    From the application switcher, open the **Streaming Analytics** application.
-
-2.  **Create a New Model:**
-    * Go to the **Analytics Builder** tab and click **New model**.
-    * Give your model a name, such as "HighHeelDetectionAnalytics".
-
-3.  **Define the Model Logic:**
-    * **Input:** Use an "Event Input" block to receive data from your high-heels detection application. Configure the block to listen for the events sent by your app.
-    * **Processing:** Use various blocks to process the input data. For example, you can use a "Threshold" block to trigger an alarm if a high-heel is detected.
-    * **Output:** Use an "Alarm" block to create an alarm in Cumulocity when a high-heel is detected. You can also use a "Measurement" block to record detection events as data points.
-
-4.  **Activate the Model:**
-    Once you have defined the logic, save and activate the model. It will now process the data from your application in real-time.
-
-## 🖼️ Example Dashboard
-
-You can create a custom dashboard in Cumulocity to visualize the data from your high-heels detection application.
-
-### Example Widgets
-
-* **Alarm List:** This widget can display a list of all alarms generated when high-heels are detected. You can configure it to show critical alarms at the top.
-* **Data Point Graph:** This widget can be used to visualize the frequency of high-heel detections over time. This can be useful for identifying trends.
-* **Image Widget:** If your application sends images of the detected high-heels, you can use this widget to display them on the dashboard. This provides visual confirmation of the detection events.
-* **Map:** If your devices have location data, you can use the map widget to show where high-heel detection events are occurring.
-
-Here is an example of how a dashboard could be laid out:
-
-This dashboard provides a comprehensive overview of the high-heels detection system, allowing you to monitor events and take action when necessary.
+Once you have the Debian package, you can follow the steps from the main README to install the AI application again.
