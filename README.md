@@ -19,7 +19,7 @@ Before you begin, ensure you have the following:
 * **Hardware:** A Raspberry Pi with a Raspberry Pi AI Camera (based on IMX500).
 * **Software:**
     * A Cumulocity IoT tenant with administrator credentials.
-    * The Vision AI UI extension for Cumulocity Devicemangemen (can be downloaded here TODO). 
+    * The Vision AI UI extension for Cumulocity Devicemangemen (can be downloaded from the release binaries in Github). 
     * Your Raspberry Pi is flashed with a supported OS and is connected to the internet.
     * The Raspberry Pi AI camera is connected and recognized (you can check the [Raspberry Pi documentation](https://www.raspberrypi.com/documentation/accessories/ai-camera.html))
 
@@ -37,12 +37,12 @@ We will use [thin-edge.io](https://thin-edge.io/) for that, which will also give
 * Install thin-edge.io on your Raspberry Pi following this documentation: https://thin-edge.github.io/thin-edge.io/install/
 * Afterwards connect it to Cumulocity following this documentation: https://thin-edge.github.io/thin-edge.io/start/connect-c8y/
 * After a few moments, your device will appear in the **Device Management** application in Cumulocity.
-* Install the thin-edge plugin for Vision AI. You can download it **here TODO** (the installation prodcedure is the same as described below for the AI application).
+* Install the thin-edge plugin for Vision AI. You can download it from the release binaries in Github (the installation prodcedure is the same as described below for the AI application).
 * After installation you should the a child-device in Cumulocity under your connected Raspberry Pi.
 
 ### 2. Install the AI Application
 
-Each demo has a specific Debian package (`.deb`) that runs the AI inference on the device.
+Each demo has a specific Debian package (`.deb`) that runs the AI inference on the device. All files can be found as pre-build packages attached to the release.
 
 *  **Log in to your Cumulocity tenant.**
 *  Navigate to the **Devicemanagement** application.
@@ -55,7 +55,8 @@ Each demo has a specific Debian package (`.deb`) that runs the AI inference on t
 
 ### 3. Deploy the AI Model
 
-The AI model must be deployed to the device via the Cumulocity platform.
+The AI model must be deployed to the device via the Cumulocity platform. All the models are attached to the binaries of the release in Github.
+With Cumulocity please upload the model as-is (as a ZIP file).
 
 * In the Cumulocity UI, navigate to the **Devicemanagement** application.
 * In the left-hand menu, go to **Management > AI Model Repository**.
@@ -93,7 +94,7 @@ Below is an overview of the available demos. Click the link for specific details
 
 ## 🏗️ Building from Source (Optional)
 
-If you wish to modify and build the AI applications yourself, instructions are provided within each demo's respective directory. You will typically need the a Python developer environment.
+If you wish to modify and build the AI applications yourself, instructions are provided within each demo's respective directory. You will typically need a Python developer environment.
 
 ## 🤝 Contributing
 

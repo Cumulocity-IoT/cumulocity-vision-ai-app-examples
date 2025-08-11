@@ -2,7 +2,7 @@
 
 ## 🤖 Model
 
-The model for this demo is a detection model that recognized people and high-vis vests.
+The model for this demo is a detection model that recognized people and high-vis vests. The model used is the **"high-vis-network.zip"**.
 
 ## 📚 Installing the Analytics
 
