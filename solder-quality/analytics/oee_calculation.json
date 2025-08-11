@@ -1,0 +1,923 @@
+{
+    "id": "198234",
+    "templateParameters": [
+        {
+            "semanticType": "c8y_deviceIdOrCurrentDeviceOrGroup",
+            "id": "MP_xiimy0uqe",
+            "name": "machine",
+            "typeDisplayName": {
+                "semanticType": "c8y_deviceIdOrCurrentDeviceOrGroup",
+                "typeName": "c8y_deviceIdOrCurrentDeviceOrGroup"
+            },
+            "type": "string",
+            "description": "",
+            "optional": false
+        }
+    ],
+    "tags": [],
+    "builderVersion": "26.52.0+20250227-1932-620947220",
+    "builderModel": {
+        "nodeDataArray": [
+            {
+                "id": "apama.analyticskit.blocks.cumulocity.DeviceMeasurementInput",
+                "key": -2,
+                "type": "C8YDevice Block",
+                "location": "-232 48",
+                "blockType": "c8y_Input",
+                "parameters": [
+                    {
+                        "id": "deviceId",
+                        "c8y_type": "c8y_deviceOrGroupId",
+                        "value": {
+                            "id": "MP_xiimy0uqe",
+                            "type": "TemplateParameterReference"
+                        }
+                    },
+                    {
+                        "id": "fragmentSeries",
+                        "c8y_type": "c8y_fragmentSeries_KPI_supportedMeasurements_DataPoints",
+                        "value": "availability.availability"
+                    },
+                    {
+                        "id": "ignoreTimestamp",
+                        "value": false
+                    }
+                ],
+                "categoryId": "Input"
+            },
+            {
+                "id": "apama.analyticskit.blocks.core.Mean",
+                "key": -4,
+                "type": "Analytics Block",
+                "location": "80 -152",
+                "categoryId": "Aggregates",
+                "parameters": [
+                    {
+                        "id": "windowDuration",
+                        "value": "300"
+                    }
+                ]
+            },
+            {
+                "id": "apama.analyticskit.blocks.core.Mean",
+                "key": -5,
+                "type": "Analytics Block",
+                "location": "80 344",
+                "categoryId": "Aggregates",
+                "parameters": [
+                    {
+                        "id": "windowDuration",
+                        "value": "300"
+                    }
+                ]
+            },
+            {
+                "id": "apama.analyticskit.blocks.core.Mean",
+                "key": -6,
+                "type": "Analytics Block",
+                "location": "80 96",
+                "categoryId": "Aggregates",
+                "parameters": [
+                    {
+                        "id": "windowDuration",
+                        "value": "300"
+                    }
+                ]
+            },
+            {
+                "id": "apama.analyticskit.blocks.cumulocity.CreateMeasurement",
+                "key": -7,
+                "type": "C8YDevice Block",
+                "location": "832 -128",
+                "blockType": "c8y_Output",
+                "parameters": [
+                    {
+                        "id": "deviceId",
+                        "c8y_type": "c8y_deviceIdOrCurrentDevice",
+                        "value": {
+                            "id": "MP_xiimy0uqe",
+                            "type": "TemplateParameterReference"
+                        }
+                    },
+                    {
+                        "id": "fragment",
+                        "value": "quality_5m"
+                    },
+                    {
+                        "id": "series",
+                        "value": "avg"
+                    },
+                    {
+                        "id": "unit",
+                        "value": "%"
+                    }
+                ],
+                "categoryId": "Output"
+            },
+            {
+                "id": "apama.analyticskit.blocks.core.Expression",
+                "key": -8,
+                "type": "Analytics Block",
+                "location": "368 -104",
+                "categoryId": "Calculations",
+                "parameters": [
+                    {
+                        "id": "expression",
+                        "value": "input1 * 100"
+                    }
+                ]
+            },
+            {
+                "id": "apama.analyticskit.blocks.core.Expression",
+                "key": -9,
+                "type": "Analytics Block",
+                "location": "368 144",
+                "categoryId": "Calculations",
+                "parameters": [
+                    {
+                        "id": "expression",
+                        "value": "input1 * 100"
+                    }
+                ]
+            },
+            {
+                "id": "apama.analyticskit.blocks.core.Expression",
+                "key": -10,
+                "type": "Analytics Block",
+                "location": "368 392",
+                "categoryId": "Calculations",
+                "parameters": [
+                    {
+                        "id": "expression",
+                        "value": "input1 * 100"
+                    }
+                ]
+            },
+            {
+                "id": "apama.analyticskit.blocks.cumulocity.CreateMeasurement",
+                "key": -11,
+                "type": "C8YDevice Block",
+                "location": "832 120",
+                "blockType": "c8y_Output",
+                "parameters": [
+                    {
+                        "id": "deviceId",
+                        "c8y_type": "c8y_deviceIdOrCurrentDevice",
+                        "value": {
+                            "id": "MP_xiimy0uqe",
+                            "type": "TemplateParameterReference"
+                        }
+                    },
+                    {
+                        "id": "fragment",
+                        "value": "availability_5m"
+                    },
+                    {
+                        "id": "series",
+                        "value": "avg"
+                    },
+                    {
+                        "id": "unit",
+                        "value": "%"
+                    }
+                ],
+                "categoryId": "Output"
+            },
+            {
+                "id": "apama.analyticskit.blocks.cumulocity.CreateMeasurement",
+                "key": -12,
+                "type": "C8YDevice Block",
+                "location": "832 368",
+                "blockType": "c8y_Output",
+                "parameters": [
+                    {
+                        "id": "deviceId",
+                        "c8y_type": "c8y_deviceIdOrCurrentDevice",
+                        "value": {
+                            "id": "MP_xiimy0uqe",
+                            "type": "TemplateParameterReference"
+                        }
+                    },
+                    {
+                        "id": "fragment",
+                        "value": "performance_5m"
+                    },
+                    {
+                        "id": "series",
+                        "value": "avg"
+                    },
+                    {
+                        "id": "unit",
+                        "value": "%"
+                    }
+                ],
+                "categoryId": "Output"
+            },
+            {
+                "id": "apama.analyticskit.blocks.core.Expression",
+                "key": -13,
+                "type": "Analytics Block",
+                "location": "368 648",
+                "categoryId": "Calculations",
+                "parameters": [
+                    {
+                        "id": "expression",
+                        "value": "input1 * input2 * input3 * 100"
+                    }
+                ]
+            },
+            {
+                "id": "apama.analyticskit.blocks.core.Rounding",
+                "key": -14,
+                "type": "Analytics Block",
+                "location": "592 648",
+                "categoryId": "Calculations",
+                "parameters": [
+                    {
+                        "id": "mode",
+                        "value": "nearest"
+                    },
+                    {
+                        "id": "numDigits",
+                        "value": "2"
+                    }
+                ]
+            },
+            {
+                "id": "apama.analyticskit.blocks.cumulocity.CreateMeasurement",
+                "key": -15,
+                "type": "C8YDevice Block",
+                "location": "832 624",
+                "blockType": "c8y_Output",
+                "parameters": [
+                    {
+                        "id": "deviceId",
+                        "c8y_type": "c8y_deviceIdOrCurrentDevice",
+                        "value": {
+                            "id": "MP_xiimy0uqe",
+                            "type": "TemplateParameterReference"
+                        }
+                    },
+                    {
+                        "id": "fragment",
+                        "value": "oee_5m"
+                    },
+                    {
+                        "id": "series",
+                        "value": "avg"
+                    },
+                    {
+                        "id": "unit",
+                        "value": "%"
+                    }
+                ],
+                "categoryId": "Output"
+            },
+            {
+                "id": "apama.analyticskit.blocks.core.Rounding",
+                "key": -16,
+                "type": "Analytics Block",
+                "location": "600 392",
+                "categoryId": "Calculations",
+                "parameters": [
+                    {
+                        "id": "mode",
+                        "value": "nearest"
+                    },
+                    {
+                        "id": "numDigits",
+                        "value": "2"
+                    }
+                ]
+            },
+            {
+                "id": "apama.analyticskit.blocks.core.Rounding",
+                "key": -17,
+                "type": "Analytics Block",
+                "location": "600 -104",
+                "categoryId": "Calculations",
+                "parameters": [
+                    {
+                        "id": "mode",
+                        "value": "nearest"
+                    },
+                    {
+                        "id": "numDigits",
+                        "value": "2"
+                    }
+                ]
+            },
+            {
+                "id": "apama.analyticskit.blocks.core.Rounding",
+                "key": -18,
+                "type": "Analytics Block",
+                "location": "600 144",
+                "categoryId": "Calculations",
+                "parameters": [
+                    {
+                        "id": "mode",
+                        "value": "nearest"
+                    },
+                    {
+                        "id": "numDigits",
+                        "value": "2"
+                    }
+                ]
+            },
+            {
+                "id": "apama.analyticskit.blocks.cumulocity.DeviceMeasurementInput",
+                "key": -19,
+                "type": "C8YDevice Block",
+                "location": "-584 -272",
+                "blockType": "c8y_Input",
+                "parameters": [
+                    {
+                        "id": "deviceId",
+                        "c8y_type": "c8y_deviceOrGroupId",
+                        "value": {
+                            "id": "MP_xiimy0uqe",
+                            "type": "TemplateParameterReference"
+                        }
+                    },
+                    {
+                        "id": "fragmentSeries",
+                        "c8y_type": "c8y_fragmentSeries_KPI_supportedMeasurements_DataPoints",
+                        "value": "production_1m.good"
+                    },
+                    {
+                        "id": "ignoreTimestamp",
+                        "value": true
+                    }
+                ],
+                "categoryId": "Input"
+            },
+            {
+                "id": "apama.analyticskit.blocks.cumulocity.DeviceMeasurementInput",
+                "key": -20,
+                "type": "C8YDevice Block",
+                "location": "-584 -224",
+                "blockType": "c8y_Input",
+                "parameters": [
+                    {
+                        "id": "deviceId",
+                        "c8y_type": "c8y_deviceOrGroupId",
+                        "value": {
+                            "id": "MP_xiimy0uqe",
+                            "type": "TemplateParameterReference"
+                        }
+                    },
+                    {
+                        "id": "fragmentSeries",
+                        "c8y_type": "c8y_fragmentSeries_KPI_supportedMeasurements_DataPoints",
+                        "value": "production_1m.total"
+                    },
+                    {
+                        "id": "ignoreTimestamp",
+                        "value": true
+                    }
+                ],
+                "categoryId": "Input"
+            },
+            {
+                "id": "apama.analyticskit.blocks.core.Expression",
+                "key": -21,
+                "type": "Analytics Block",
+                "location": "-376 -176",
+                "categoryId": "Calculations",
+                "parameters": [
+                    {
+                        "id": "expression",
+                        "value": "input1 / input2"
+                    }
+                ]
+            },
+            {
+                "id": "apama.analyticskit.blocks.core.Rounding",
+                "key": -22,
+                "type": "Analytics Block",
+                "location": "-160 -176",
+                "categoryId": "Calculations",
+                "parameters": [
+                    {
+                        "id": "mode",
+                        "value": "nearest"
+                    },
+                    {
+                        "id": "numDigits",
+                        "value": "2"
+                    }
+                ]
+            },
+            {
+                "id": "apama.analyticskit.blocks.cumulocity.DeviceMeasurementInput",
+                "key": -23,
+                "type": "C8YDevice Block",
+                "location": "-592 296",
+                "blockType": "c8y_Input",
+                "parameters": [
+                    {
+                        "id": "deviceId",
+                        "c8y_type": "c8y_deviceOrGroupId",
+                        "value": {
+                            "id": "MP_xiimy0uqe",
+                            "type": "TemplateParameterReference"
+                        }
+                    },
+                    {
+                        "id": "fragmentSeries",
+                        "c8y_type": "c8y_fragmentSeries_KPI_supportedMeasurements_DataPoints",
+                        "value": "production_1m.total"
+                    },
+                    {
+                        "id": "ignoreTimestamp",
+                        "value": false
+                    }
+                ],
+                "categoryId": "Input"
+            },
+            {
+                "id": "apama.analyticskit.blocks.core.Expression",
+                "key": -24,
+                "type": "Analytics Block",
+                "location": "-376 392",
+                "categoryId": "Calculations",
+                "parameters": [
+                    {
+                        "id": "expression",
+                        "value": "input1 / 13"
+                    }
+                ]
+            },
+            {
+                "id": "apama.analyticskit.blocks.core.Rounding",
+                "key": -25,
+                "type": "Analytics Block",
+                "location": "-160 392",
+                "categoryId": "Calculations",
+                "parameters": [
+                    {
+                        "id": "mode",
+                        "value": "nearest"
+                    },
+                    {
+                        "id": "numDigits",
+                        "value": "2"
+                    }
+                ]
+            }
+        ],
+        "linkDataArray": [
+            {
+                "outputId": "value",
+                "to": -6,
+                "from": -2,
+                "inputId": "measurementValue",
+                "points": [
+                    -144,
+                    48,
+                    -129,
+                    48,
+                    -76,
+                    48,
+                    -76,
+                    48,
+                    -23,
+                    48,
+                    -8,
+                    48
+                ]
+            },
+            {
+                "outputId": "input1",
+                "to": -8,
+                "from": -4,
+                "inputId": "meanValue",
+                "points": [
+                    168,
+                    -152,
+                    183,
+                    -152,
+                    224,
+                    -152,
+                    224,
+                    -200,
+                    265,
+                    -200,
+                    280,
+                    -200
+                ]
+            },
+            {
+                "outputId": "input1",
+                "to": -10,
+                "from": -5,
+                "inputId": "meanValue",
+                "points": [
+                    168,
+                    344,
+                    183,
+                    344,
+                    224,
+                    344,
+                    224,
+                    296,
+                    265,
+                    296,
+                    280,
+                    296
+                ]
+            },
+            {
+                "outputId": "input1",
+                "to": -9,
+                "from": -6,
+                "inputId": "meanValue",
+                "points": [
+                    168,
+                    96,
+                    183,
+                    96,
+                    224,
+                    96,
+                    224,
+                    48,
+                    265,
+                    48,
+                    280,
+                    48
+                ]
+            },
+            {
+                "outputId": "value",
+                "to": -14,
+                "from": -13,
+                "inputId": "value",
+                "points": [
+                    456,
+                    648,
+                    471,
+                    648,
+                    480,
+                    648,
+                    480,
+                    648,
+                    489,
+                    648,
+                    504,
+                    648
+                ]
+            },
+            {
+                "outputId": "input3",
+                "to": -13,
+                "from": -5,
+                "inputId": "meanValue",
+                "points": [
+                    168,
+                    344,
+                    183,
+                    344,
+                    224,
+                    344,
+                    224,
+                    648,
+                    265,
+                    648,
+                    280,
+                    648
+                ]
+            },
+            {
+                "outputId": "input2",
+                "to": -13,
+                "from": -6,
+                "inputId": "meanValue",
+                "points": [
+                    168,
+                    96,
+                    183,
+                    96,
+                    240.68414306640625,
+                    96,
+                    240.68414306640625,
+                    600,
+                    265,
+                    600,
+                    280,
+                    600
+                ]
+            },
+            {
+                "outputId": "input1",
+                "to": -13,
+                "from": -4,
+                "inputId": "meanValue",
+                "points": [
+                    168,
+                    -152,
+                    183,
+                    -152,
+                    256.35894775390625,
+                    -152,
+                    256.35894775390625,
+                    552,
+                    265,
+                    552,
+                    280,
+                    552
+                ]
+            },
+            {
+                "outputId": "value",
+                "to": -15,
+                "from": -14,
+                "inputId": "roundedValue",
+                "points": [
+                    680,
+                    648,
+                    695,
+                    648,
+                    712,
+                    648,
+                    712,
+                    552,
+                    729,
+                    552,
+                    744,
+                    552
+                ]
+            },
+            {
+                "outputId": "value",
+                "to": -16,
+                "from": -10,
+                "inputId": "value",
+                "points": [
+                    456,
+                    392,
+                    471,
+                    392,
+                    484,
+                    392,
+                    484,
+                    392,
+                    497,
+                    392,
+                    512,
+                    392
+                ]
+            },
+            {
+                "outputId": "value",
+                "to": -12,
+                "from": -16,
+                "inputId": "roundedValue",
+                "points": [
+                    688,
+                    392,
+                    703,
+                    392,
+                    700,
+                    392,
+                    700,
+                    392,
+                    724,
+                    392,
+                    724,
+                    296,
+                    729,
+                    296,
+                    744,
+                    296
+                ]
+            },
+            {
+                "outputId": "value",
+                "to": -18,
+                "from": -9,
+                "inputId": "value",
+                "points": [
+                    456,
+                    144,
+                    471,
+                    144,
+                    484,
+                    144,
+                    484,
+                    144,
+                    497,
+                    144,
+                    512,
+                    144
+                ]
+            },
+            {
+                "outputId": "value",
+                "to": -11,
+                "from": -18,
+                "inputId": "roundedValue",
+                "points": [
+                    688,
+                    144,
+                    703,
+                    144,
+                    716,
+                    144,
+                    716,
+                    48,
+                    729,
+                    48,
+                    744,
+                    48
+                ]
+            },
+            {
+                "outputId": "value",
+                "to": -17,
+                "from": -8,
+                "inputId": "value",
+                "points": [
+                    456,
+                    -104,
+                    471,
+                    -104,
+                    484,
+                    -104,
+                    484,
+                    -104,
+                    497,
+                    -104,
+                    512,
+                    -104
+                ]
+            },
+            {
+                "outputId": "value",
+                "to": -7,
+                "from": -17,
+                "inputId": "roundedValue",
+                "points": [
+                    688,
+                    -104,
+                    703,
+                    -104,
+                    716,
+                    -104,
+                    716,
+                    -200,
+                    729,
+                    -200,
+                    744,
+                    -200
+                ]
+            },
+            {
+                "outputId": "input1",
+                "to": -21,
+                "from": -19,
+                "inputId": "measurementValue",
+                "points": [
+                    -496,
+                    -272,
+                    -481,
+                    -272,
+                    -480,
+                    -272,
+                    -480,
+                    -272,
+                    -479,
+                    -272,
+                    -464,
+                    -272
+                ]
+            },
+            {
+                "outputId": "input2",
+                "to": -21,
+                "from": -20,
+                "inputId": "measurementValue",
+                "points": [
+                    -496,
+                    -224,
+                    -481,
+                    -224,
+                    -480,
+                    -224,
+                    -480,
+                    -224,
+                    -479,
+                    -224,
+                    -464,
+                    -224
+                ]
+            },
+            {
+                "outputId": "value",
+                "to": -22,
+                "from": -21,
+                "inputId": "value",
+                "points": [
+                    -288,
+                    -176,
+                    -273,
+                    -176,
+                    -268,
+                    -176,
+                    -268,
+                    -176,
+                    -263,
+                    -176,
+                    -248,
+                    -176
+                ]
+            },
+            {
+                "outputId": "value",
+                "to": -4,
+                "from": -22,
+                "inputId": "roundedValue",
+                "points": [
+                    -72,
+                    -176,
+                    -57,
+                    -176,
+                    -40,
+                    -176,
+                    -40,
+                    -200,
+                    -23,
+                    -200,
+                    -8,
+                    -200
+                ]
+            },
+            {
+                "outputId": "input1",
+                "to": -24,
+                "from": -23,
+                "inputId": "measurementValue",
+                "points": [
+                    -504,
+                    296,
+                    -489,
+                    296,
+                    -484,
+                    296,
+                    -484,
+                    296,
+                    -479,
+                    296,
+                    -464,
+                    296
+                ]
+            },
+            {
+                "outputId": "value",
+                "to": -25,
+                "from": -24,
+                "inputId": "value",
+                "points": [
+                    -288,
+                    392,
+                    -273,
+                    392,
+                    -268,
+                    392,
+                    -268,
+                    392,
+                    -263,
+                    392,
+                    -248,
+                    392
+                ]
+            },
+            {
+                "outputId": "value",
+                "to": -5,
+                "from": -25,
+                "inputId": "roundedValue",
+                "points": [
+                    -72,
+                    392,
+                    -57,
+                    392,
+                    -40,
+                    392,
+                    -40,
+                    296,
+                    -23,
+                    296,
+                    -8,
+                    296
+                ]
+            }
+        ]
+    },
+    "name": "OEE calculation",
+    "type": "c8y_PublicAnalyticsBuilderModel",
+    "c8y_analyticsModel": {},
+    "userInterfaceProperties": {
+        "displayGrid": false
+    },
+    "description": ""
+}

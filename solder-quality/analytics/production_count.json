@@ -1,0 +1,547 @@
+{
+    "id": "596375",
+    "templateParameters": [
+        {
+            "semanticType": "c8y_deviceIdOrCurrentDeviceOrGroup",
+            "id": "MP_vaa8i0yq0",
+            "name": "machine",
+            "typeDisplayName": {
+                "semanticType": "c8y_deviceIdOrCurrentDeviceOrGroup",
+                "typeName": "c8y_deviceIdOrCurrentDeviceOrGroup"
+            },
+            "type": "string",
+            "description": "",
+            "optional": false
+        }
+    ],
+    "tags": [],
+    "builderVersion": "26.56.0+20250305-1932-445f98295",
+    "builderModel": {
+        "nodeDataArray": [
+            {
+                "id": "apama.analyticskit.blocks.cumulocity.DeviceEventInput",
+                "key": -1,
+                "type": "C8YDevice Block",
+                "location": "-328 -128",
+                "blockType": "c8y_Input",
+                "parameters": [
+                    {
+                        "id": "deviceId",
+                        "c8y_type": "c8y_deviceOrGroupId",
+                        "value": {
+                            "id": "MP_vaa8i0yq0",
+                            "type": "TemplateParameterReference"
+                        }
+                    },
+                    {
+                        "id": "type",
+                        "value": "production_event_GOOD"
+                    },
+                    {
+                        "id": "notificationMode",
+                        "value": "ALL"
+                    },
+                    {
+                        "id": "ignoreTimestamp",
+                        "value": false
+                    }
+                ],
+                "categoryId": "Input"
+            },
+            {
+                "id": "apama.analyticskit.blocks.cumulocity.DeviceEventInput",
+                "key": -3,
+                "type": "C8YDevice Block",
+                "location": "-328 96",
+                "blockType": "c8y_Input",
+                "parameters": [
+                    {
+                        "id": "deviceId",
+                        "c8y_type": "c8y_deviceOrGroupId",
+                        "value": {
+                            "id": "MP_vaa8i0yq0",
+                            "type": "TemplateParameterReference"
+                        }
+                    },
+                    {
+                        "id": "type",
+                        "value": "production_event_BAD"
+                    },
+                    {
+                        "id": "notificationMode",
+                        "value": "ALL"
+                    },
+                    {
+                        "id": "ignoreTimestamp",
+                        "value": false
+                    }
+                ],
+                "categoryId": "Input"
+            },
+            {
+                "id": "apama.analyticskit.blocks.core.Counter",
+                "key": -4,
+                "type": "Analytics Block",
+                "location": "184 -96",
+                "categoryId": "Aggregates",
+                "parameters": [
+                    {
+                        "id": "maximumCount",
+                        "value": 0
+                    },
+                    {
+                        "id": "loopCount",
+                        "value": true
+                    },
+                    {
+                        "id": "maximumNumberSame",
+                        "value": 0
+                    },
+                    {
+                        "id": "loopNumberSame",
+                        "value": true
+                    }
+                ]
+            },
+            {
+                "id": "apama.analyticskit.blocks.core.Counter",
+                "key": -5,
+                "type": "Analytics Block",
+                "location": "184 144",
+                "categoryId": "Aggregates",
+                "parameters": [
+                    {
+                        "id": "maximumCount",
+                        "value": 0
+                    },
+                    {
+                        "id": "loopCount",
+                        "value": true
+                    },
+                    {
+                        "id": "maximumNumberSame",
+                        "value": 0
+                    },
+                    {
+                        "id": "loopNumberSame",
+                        "value": true
+                    }
+                ]
+            },
+            {
+                "id": "apama.analyticskit.blocks.core.CronTimer",
+                "key": -6,
+                "type": "Analytics Block",
+                "location": "-328 344",
+                "categoryId": "Utilities",
+                "parameters": [
+                    {
+                        "id": "seconds",
+                        "value": "0"
+                    },
+                    {
+                        "id": "minutes",
+                        "value": "*"
+                    },
+                    {
+                        "id": "hours",
+                        "value": "*"
+                    },
+                    {
+                        "id": "daysOfMonth",
+                        "value": "*"
+                    },
+                    {
+                        "id": "months",
+                        "value": "*"
+                    },
+                    {
+                        "id": "daysOfWeek",
+                        "value": "*"
+                    }
+                ]
+            },
+            {
+                "id": "apama.analyticskit.blocks.cumulocity.CreateMeasurement",
+                "key": -7,
+                "type": "C8YDevice Block",
+                "location": "752 104",
+                "blockType": "c8y_Output",
+                "parameters": [
+                    {
+                        "id": "deviceId",
+                        "c8y_type": "c8y_deviceIdOrCurrentDevice",
+                        "value": {
+                            "id": "MP_vaa8i0yq0",
+                            "type": "TemplateParameterReference"
+                        }
+                    },
+                    {
+                        "id": "fragment",
+                        "value": "production_1m"
+                    },
+                    {
+                        "id": "series",
+                        "value": "total"
+                    }
+                ],
+                "categoryId": "Output"
+            },
+            {
+                "id": "apama.analyticskit.blocks.core.Expression",
+                "key": -8,
+                "type": "Analytics Block",
+                "location": "512 32",
+                "categoryId": "Calculations",
+                "parameters": [
+                    {
+                        "id": "expression",
+                        "value": "input1 + input2"
+                    }
+                ]
+            },
+            {
+                "id": "apama.analyticskit.blocks.cumulocity.CreateMeasurement",
+                "key": -15,
+                "type": "C8YDevice Block",
+                "location": "752 -104",
+                "blockType": "c8y_Output",
+                "parameters": [
+                    {
+                        "id": "deviceId",
+                        "c8y_type": "c8y_deviceIdOrCurrentDevice",
+                        "value": {
+                            "id": "MP_vaa8i0yq0",
+                            "type": "TemplateParameterReference"
+                        }
+                    },
+                    {
+                        "id": "fragment",
+                        "value": "production_1m"
+                    },
+                    {
+                        "id": "series",
+                        "value": "good"
+                    }
+                ],
+                "categoryId": "Output"
+            },
+            {
+                "id": "apama.analyticskit.blocks.cumulocity.CreateMeasurement",
+                "key": -16,
+                "type": "C8YDevice Block",
+                "location": "752 312",
+                "blockType": "c8y_Output",
+                "parameters": [
+                    {
+                        "id": "deviceId",
+                        "c8y_type": "c8y_deviceIdOrCurrentDevice",
+                        "value": {
+                            "id": "MP_vaa8i0yq0",
+                            "type": "TemplateParameterReference"
+                        }
+                    },
+                    {
+                        "id": "fragment",
+                        "value": "production_1m"
+                    },
+                    {
+                        "id": "series",
+                        "value": "bad"
+                    }
+                ],
+                "categoryId": "Output"
+            },
+            {
+                "id": "apama.analyticskit.blocks.core.TimeDelay",
+                "key": -10,
+                "type": "Analytics Block",
+                "location": "-120 240",
+                "categoryId": "Flow Manipulation",
+                "parameters": [
+                    {
+                        "id": "delaySecs",
+                        "value": "0.001"
+                    }
+                ]
+            }
+        ],
+        "linkDataArray": [
+            {
+                "outputId": "value",
+                "to": -4,
+                "from": -1,
+                "inputId": "value",
+                "points": [
+                    -240,
+                    -128,
+                    -225,
+                    -128,
+                    -72,
+                    -128,
+                    -72,
+                    -120,
+                    81,
+                    -120,
+                    96,
+                    -120
+                ]
+            },
+            {
+                "outputId": "value",
+                "to": -5,
+                "from": -3,
+                "inputId": "value",
+                "points": [
+                    -240,
+                    96,
+                    -225,
+                    96,
+                    -72,
+                    96,
+                    -72,
+                    120,
+                    81,
+                    120,
+                    96,
+                    120
+                ]
+            },
+            {
+                "outputId": "value",
+                "to": -7,
+                "from": -8,
+                "inputId": "value",
+                "points": [
+                    600,
+                    32,
+                    615,
+                    32,
+                    632,
+                    32,
+                    632,
+                    32,
+                    649,
+                    32,
+                    664,
+                    32
+                ]
+            },
+            {
+                "outputId": "input2",
+                "to": -8,
+                "from": -5,
+                "inputId": "count",
+                "points": [
+                    272,
+                    120,
+                    287,
+                    120,
+                    348,
+                    120,
+                    348,
+                    -16,
+                    409,
+                    -16,
+                    424,
+                    -16
+                ]
+            },
+            {
+                "outputId": "input1",
+                "to": -8,
+                "from": -4,
+                "inputId": "count",
+                "points": [
+                    272,
+                    -120,
+                    287,
+                    -120,
+                    348,
+                    -120,
+                    348,
+                    -64,
+                    409,
+                    -64,
+                    424,
+                    -64
+                ]
+            },
+            {
+                "outputId": "value",
+                "to": -15,
+                "from": -4,
+                "inputId": "count",
+                "points": [
+                    272,
+                    -120,
+                    287,
+                    -120,
+                    468,
+                    -120,
+                    468,
+                    -176,
+                    649,
+                    -176,
+                    664,
+                    -176
+                ]
+            },
+            {
+                "outputId": "value",
+                "to": -16,
+                "from": -5,
+                "inputId": "count",
+                "points": [
+                    272,
+                    120,
+                    287,
+                    120,
+                    287,
+                    120,
+                    287,
+                    240,
+                    649,
+                    240,
+                    664,
+                    240
+                ]
+            },
+            {
+                "outputId": "value",
+                "to": -10,
+                "from": -6,
+                "inputId": "tick",
+                "points": [
+                    -240,
+                    344,
+                    -225,
+                    344,
+                    -224,
+                    344,
+                    -224,
+                    240,
+                    -223,
+                    240,
+                    -208,
+                    240
+                ]
+            },
+            {
+                "outputId": "reset",
+                "to": -5,
+                "from": -10,
+                "inputId": "delayedValue",
+                "points": [
+                    -32,
+                    240,
+                    -17,
+                    240,
+                    32,
+                    240,
+                    32,
+                    168,
+                    81,
+                    168,
+                    96,
+                    168
+                ]
+            },
+            {
+                "outputId": "reset",
+                "to": -4,
+                "from": -10,
+                "inputId": "delayedValue",
+                "points": [
+                    -32,
+                    240,
+                    -17,
+                    240,
+                    32,
+                    240,
+                    32,
+                    -72,
+                    81,
+                    -72,
+                    96,
+                    -72
+                ]
+            },
+            {
+                "outputId": "send",
+                "to": -16,
+                "from": -6,
+                "inputId": "tick",
+                "points": [
+                    -240,
+                    344,
+                    -225,
+                    344,
+                    612.718994140625,
+                    344,
+                    612.718994140625,
+                    288,
+                    649,
+                    288,
+                    664,
+                    288
+                ]
+            },
+            {
+                "outputId": "send",
+                "to": -7,
+                "from": -6,
+                "inputId": "tick",
+                "points": [
+                    -240,
+                    344,
+                    -225,
+                    344,
+                    -228,
+                    344,
+                    -228,
+                    344,
+                    612,
+                    344,
+                    612,
+                    80,
+                    649,
+                    80,
+                    664,
+                    80
+                ]
+            },
+            {
+                "outputId": "send",
+                "to": -15,
+                "from": -6,
+                "inputId": "tick",
+                "points": [
+                    -240,
+                    344,
+                    -225,
+                    344,
+                    -228,
+                    344,
+                    -228,
+                    345.8035888671875,
+                    611.854736328125,
+                    345.8035888671875,
+                    611.854736328125,
+                    -128,
+                    649,
+                    -128,
+                    664,
+                    -128
+                ]
+            }
+        ]
+    },
+    "name": "production_count",
+    "type": "c8y_PublicAnalyticsBuilderModel",
+    "c8y_analyticsModel": {},
+    "userInterfaceProperties": {
+        "displayGrid": false
+    },
+    "description": ""
+}

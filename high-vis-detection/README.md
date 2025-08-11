@@ -1,5 +1,10 @@
 # High-Vis Detection AI App
 
+This demo shows how you can use Vision AI for safety checks in areas that require PPE. The camera sends messages to Cumulocity in case of detecting people and whether they are wearing equipment or not.
+The model is trained to detect high visibility vests as an example of PPE.
+
+<img src="../_images/ppe_check.jpeg" alt="Solder Quality Demo" width="250" />
+
 ## 🤖 Model
 
 The model for this demo is a detection model that recognized people and high-vis vests. The model used is the **"high-vis-network.zip"**.
@@ -8,7 +13,7 @@ The model for this demo is a detection model that recognized people and high-vis
 
 For this example the analytics flow has only the camera as a parameter. Ensure that you select not the Raspberry Pi but the camera child device (as this is where the data is generated).
 
-## The Data
+## 📈 The Data
 
 ### Data of the camera
 
@@ -38,7 +43,7 @@ The analytics flow of this demo will generate us hourly statistics of the object
 
 With the above data you have information about the current hour and hourly statistics that you can display easily on a dashboard. Below an example.
 
-![HighVisDashboard](../images/highVisDashboard.jpg)
+![HighVisDashboard](../_images/highVisDashboard.jpg)
 
 ## 📦 Debian Package Build
 

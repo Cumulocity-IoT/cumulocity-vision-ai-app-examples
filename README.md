@@ -10,6 +10,20 @@ Each demo includes:
 
 Note that the camera can only run one model at a time, but it can run multiple AI applications at the same time. Therefore, the examples that share the same model can be also run at the same time.
 
+
+---
+
+## 📚 Available Demos
+
+Below is an overview of the available demos. Click the link for specific details about each implementation, its purpose, and any unique setup requirements.
+After the table you will find the general installation instructions which are the same for each demo.
+
+| Demo | Image | Description | Link |
+| --- | --- | --- | --- |
+| **High-Vis Vest detection** | <img src="./_images/ppe_demo.jpeg" alt="PPE Demo" width="200" /> | Detects people in the camera's field of view in real-time and checks for high-vis vests. An example of a PPE verifcation. | [Details](./high-vis-detection/README.md) |
+| **Solder quality classification** | <img src="./_images/solder_quality_demo.jpeg" alt="Solder Quality Demo" width="200" /> | Classifies if a PCB is soldered correctly or not. An example of a visual quality check resulting in OEE calculation. | [Details](./solder-quality/README.md) |
+
+
 ---
 
 ## 🛠️ Prerequisites
@@ -81,16 +95,6 @@ Using the processed data, you can create a dashboard to visualize the results. E
 
 ---
 
-## 📚 Available Demos
-
-Below is an overview of the available demos. Click the link for specific details about each implementation, its purpose, and any unique setup requirements.
-
-| Demo | Description | Link |
-| --- | --- | --- |
-| **High-Vis Vest detection** | Detects people in the camera's field of view in real-time and checks for high-vis vests. An example of a PPE verifcation. | [Details](./high-vis-detection/README.md) |
-
-
----
 
 ## 🏗️ Building from Source (Optional)
 
