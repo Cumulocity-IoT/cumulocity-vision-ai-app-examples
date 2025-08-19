@@ -2,13 +2,13 @@
 set -e
 USER="tedge"
 LOG_DIR="/var/log/tedge/post-processor"
-LOG_FILE="${LOG_DIR}/solder-quality-app.log"
+LOG_FILE="${LOG_DIR}/time-in-store-app.log"
 
 #assign the list of groups to the tegde use
 sudo usermod -aG video,input,render,i2c,spi,gpio,sudo,adm,dialout "$USER"
 echo "user group assigned to use $USER"
 
-SUDO_LINE='tedge ALL=NOPASSWD: /bin/systemctl restart solder-quality-app.service'
+SUDO_LINE='tedge ALL=NOPASSWD: /bin/systemctl restart time-in-store-app.service'
 
 for FILE in /etc/sudoers.d/tedge /etc/sudoers.d/tedge-nopasswd; do
     # Create the file if it doesn't exist
@@ -34,14 +34,14 @@ fi
 sudo chown "$USER":"$USER" "$LOG_FILE"
 sudo chmod 644 "$LOG_FILE"
 
-sudo chmod +x /usr/local/bin/solder-quality-app/*
+sudo chmod +x /usr/local/bin/time-in-store-app/*
 
 # Ensure the service file is copied to the correct location
-install -m 644 /usr/lib/systemd/system/solder-quality-app.service /etc/systemd/system/solder-quality-app.service
+install -m 644 /usr/lib/systemd/system/time-in-store-app.service /etc/systemd/system/time-in-store-app.service
 
 # Reload systemd
 systemctl daemon-reload
 
 # Enable and start the service
-systemctl enable solder-quality-app.service
-systemctl start solder-quality-app.service
+systemctl enable time-in-store-app.service
+systemctl start time-in-store-app.service

@@ -3,7 +3,7 @@
 This demo shows how you can use Vision AI for safety checks in areas that require PPE. The camera sends messages to Cumulocity in case of detecting people and whether they are wearing equipment or not.
 The model is trained to detect high visibility vests as an example of PPE.
 
-<img src="../_images/ppe_check.jpeg" alt="Solder Quality Demo" width="250" />
+<img src="../_images/ppe_check.jpeg" alt="High Vis Demo" width="250" />
 
 ## 🤖 Model
 
