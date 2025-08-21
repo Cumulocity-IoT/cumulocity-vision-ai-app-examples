@@ -1,0 +1,145 @@
+{
+    "id": "108232",
+    "templateParameters": [
+        {
+            "semanticType": "c8y_deviceIdOrCurrentDeviceOrGroup",
+            "id": "MP_cokoocipb",
+            "name": "machine",
+            "typeDisplayName": {
+                "semanticType": "c8y_deviceIdOrCurrentDeviceOrGroup",
+                "typeName": "c8y_deviceIdOrCurrentDeviceOrGroup"
+            },
+            "type": "string",
+            "description": "",
+            "optional": false
+        }
+    ],
+    "tags": [],
+    "builderVersion": "26.60.0+20250311-1931-698c05fdb",
+    "builderModel": {
+        "nodeDataArray": [
+            {
+                "id": "apama.analyticskit.blocks.core.CronTimer",
+                "key": -1,
+                "type": "Analytics Block",
+                "location": "-112 -16",
+                "categoryId": "Utilities",
+                "parameters": [
+                    {
+                        "id": "seconds",
+                        "value": "*/30"
+                    },
+                    {
+                        "id": "minutes",
+                        "value": "*"
+                    },
+                    {
+                        "id": "hours",
+                        "value": "*"
+                    },
+                    {
+                        "id": "daysOfMonth",
+                        "value": "*"
+                    },
+                    {
+                        "id": "months",
+                        "value": "*"
+                    },
+                    {
+                        "id": "daysOfWeek",
+                        "value": "*"
+                    }
+                ]
+            },
+            {
+                "id": "apama.analyticskit.blocks.cumulocity.CreateMeasurement",
+                "key": -2,
+                "type": "C8YDevice Block",
+                "location": "480 48",
+                "blockType": "c8y_Output",
+                "parameters": [
+                    {
+                        "id": "deviceId",
+                        "c8y_type": "c8y_deviceIdOrCurrentDevice",
+                        "value": {
+                            "id": "MP_cokoocipb",
+                            "type": "TemplateParameterReference"
+                        }
+                    },
+                    {
+                        "id": "fragment",
+                        "value": "availability"
+                    },
+                    {
+                        "id": "series",
+                        "value": "availability"
+                    }
+                ],
+                "categoryId": "Output"
+            },
+            {
+                "id": "apama.analyticsbuilder.blocks.ConstantValue",
+                "key": -3,
+                "type": "Analytics Block",
+                "location": "192 -16",
+                "categoryId": "Utilities",
+                "parameters": [
+                    {
+                        "id": "value",
+                        "c8y_type": "pab_multiLine",
+                        "value": "1"
+                    }
+                ]
+            }
+        ],
+        "linkDataArray": [
+            {
+                "outputId": "trigger",
+                "to": -3,
+                "from": -1,
+                "inputId": "tick",
+                "points": [
+                    -24,
+                    -16,
+                    -9,
+                    -16,
+                    40,
+                    -16,
+                    40,
+                    -16,
+                    89,
+                    -16,
+                    104,
+                    -16
+                ]
+            },
+            {
+                "outputId": "value",
+                "to": -2,
+                "from": -3,
+                "inputId": "output",
+                "points": [
+                    280,
+                    -16,
+                    295,
+                    -16,
+                    336,
+                    -16,
+                    336,
+                    -24,
+                    377,
+                    -24,
+                    392,
+                    -24
+                ]
+            }
+        ]
+    },
+    "name": "Availability Sim",
+    "type": "c8y_PublicAnalyticsBuilderModel",
+    "c8y_analyticsModel": {},
+    "userInterfaceProperties": {
+        "displayGrid": false
+    },
+    "description": ""
+}

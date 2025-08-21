@@ -12,7 +12,7 @@ The model for this demo is a classification model that recognized different stat
 
 ## 📚 Installing the Analytics
 
-For this example there are two analytics flows. When setting up the camera and installing the AI application a new child-devices will be generated once the first data is sent. Both analytics flows need this new child-devices (default: machine_1) as an input and not the camera device.
+For this example there are three analytics flows. When setting up the camera and installing the AI application a new child-devices will be generated once the first data is sent. Both analytics flows need this new child-devices (default: machine_1) as an input and not the camera device.
 
 ## 📈 The Data
 
