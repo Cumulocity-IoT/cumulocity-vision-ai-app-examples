@@ -1,0 +1,9 @@
+#!/bin/bash
+
+
+systemctl stop pose-detection.service
+systemctl disable pose-detection.service
+rm -f /etc/systemd/system/pose-detection.service
+
+
+systemctl daemon-reload
