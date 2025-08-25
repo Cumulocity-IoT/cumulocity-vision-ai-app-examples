@@ -1,9 +1,9 @@
 #!/bin/bash
 
 
-systemctl stop solder-post-processor.service
-systemctl disable solder-post-processor.service
-rm -f /etc/systemd/system/solder-post-processor.service
+systemctl stop solder-quality-app.service
+systemctl disable solder-quality-app.service
+rm -f /etc/systemd/system/solder-quality-app.service
 
 
 systemctl daemon-reload

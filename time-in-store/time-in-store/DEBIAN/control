@@ -1,0 +1,8 @@
+Package: time-in-store-app
+Version: 1.0.0
+Section: utils
+Priority: optional
+Architecture: all
+Maintainer: tobias.sommer@cumulocity.com
+Depends: python3, python3-paho-mqtt, systemd
+Description: Post processing handler for measuring how long a person is in the fov
