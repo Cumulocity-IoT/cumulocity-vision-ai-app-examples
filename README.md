@@ -22,7 +22,7 @@ After the table you will find the general installation instructions which are th
 | --- | --- | --- | --- |
 | **High-Vis Vest detection** | <img src="./_images/ppe_demo.jpeg" alt="PPE Demo" width="200" /> | Detects people in the camera's field of view in real-time and checks for high-vis vests. An example of a PPE verifcation. | [Details](./high-vis-detection/README.md) |
 | **Solder quality classification** | <img src="./_images/solder_quality_demo.jpeg" alt="Solder Quality Demo" width="200" /> | Classifies if a PCB is soldered correctly or not. An example of a visual quality check resulting in OEE calculation. | [Details](./solder-quality/README.md) |
-| **Time in Store classification** | <img src="./_images/store_demo.jpeg" alt="Store Demo" width="200" /> | Detects and tracks people and calculates how long they are in the FoV | [Details](./time-in-store/README.md) |
+| **Time in Store detection** | <img src="./_images/store_demo.jpeg" alt="Store Demo" width="200" /> | Detects and tracks people and calculates how long they are in the FoV | [Details](./time-in-store/README.md) |
 
 
 ---
