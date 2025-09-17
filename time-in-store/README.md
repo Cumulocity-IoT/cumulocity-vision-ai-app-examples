@@ -7,6 +7,8 @@ This demo shows how you can use Vision AI to analyse how long people are in a ce
 ## 🤖 Model
 
 The model for this demo is a detection model that recognized people (we will use the same model as for high-vis). The model used is the **"high-vis-network.zip"**.
+> [!IMPORTANT]  
+> In Cumulocity when uploading the model into the repository it has to be named "highvis" in order to match the AI application,
 
 ## 📚 Installing the Analytics
 

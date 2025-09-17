@@ -8,6 +8,8 @@ The model is trained to detect high visibility vests as an example of PPE.
 ## 🤖 Model
 
 The model for this demo is a detection model that recognized people and high-vis vests. The model used is the **"high-vis-network.zip"**.
+> [!IMPORTANT]  
+> In Cumulocity when uploading the model into the repository it has to be named "highvis" in order to match the AI application,
 
 ## 📚 Installing the Analytics
 

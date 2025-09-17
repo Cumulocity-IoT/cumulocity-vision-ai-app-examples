@@ -1,0 +1,13 @@
+[Unit]
+Description=Solder Points Post Processor
+After=network.target
+
+[Service]
+Type=idle
+Restart=on-failure
+User=tedge
+WorkingDirectory=/usr/local/bin/solder-quality-app
+ExecStart=python solder-quality-app.py
+
+[Install]
+WantedBy=multi-user.target

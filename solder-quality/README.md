@@ -9,6 +9,8 @@ Using Cumulocity we can combine the vision data with other process data to gener
 ## 🤖 Model
 
 The model for this demo is a classification model that recognized different states of a PCB inspection machine (e.g. BACKGROUND, GOOD, NOT_GOOD). The model used is the **"solder-network.zip"**.
+> [!IMPORTANT]  
+> In Cumulocity when uploading the model into the repository it has to be named "solder" in order to match the AI application,
 
 ## 📚 Installing the Analytics
 

@@ -1,0 +1,13 @@
+[Unit]
+Description=High Vis Counter Post Processor
+After=network.target
+
+[Service]
+Type=idle
+Restart=on-failure
+User=tedge
+WorkingDirectory=/usr/local/bin/high-vis-detection-app
+ExecStart=python high-vis-detection-app.py
+
+[Install]
+WantedBy=multi-user.target
