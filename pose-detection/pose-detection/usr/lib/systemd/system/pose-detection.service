@@ -4,10 +4,10 @@ After=network.target
 
 [Service]
 ExecStart=/usr/bin/python3 /opt/pose-detection/c8y-pose-detection.py
-WorkingDirectory=/usr/local/bin/
+WorkingDirectory=/opt/pose-detection
 Restart=always
 User=tedge
-StandardOutput=append:/var/log/tedge/vai-plugin/pose-detection.log
+StandardOutput=append:/var/log/tedge/vision-apps/pose-detection.log
 StandardError=inherit  # Redirect STDERR to STDOUT, so errors also go to the same log file
 
 [Install]

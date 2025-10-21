@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 USER="tedge"
-LOG_DIR="/var/log/tedge/post-processor"
+LOG_DIR="/var/log/tedge/vision-apps"
 LOG_FILE="${LOG_DIR}/pose-detection.log"
 
 #assign the list of groups to the tegde use
@@ -34,7 +34,7 @@ fi
 sudo chown "$USER":"$USER" "$LOG_FILE"
 sudo chmod 644 "$LOG_FILE"
 
-sudo chmod +x /usr/local/bin/pose-detection/*
+sudo chmod +x /opt/pose-detection/*
 
 # Ensure the service file is copied to the correct location
 install -m 644 /usr/lib/systemd/system/pose-detection.service /etc/systemd/system/pose-detection.service
