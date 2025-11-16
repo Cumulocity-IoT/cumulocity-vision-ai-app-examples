@@ -1,5 +1,5 @@
-Package: time-in-store-app
-Version: 1.0.0
+Package: people-in-store-app
+Version: 1.1.0
 Section: utils
 Priority: optional
 Architecture: all

@@ -1,9 +1,0 @@
-#!/bin/bash
-
-
-systemctl stop time-in-store-app.service
-systemctl disable time-in-store-app.service
-rm -f /etc/systemd/system/time-in-store-app.service
-
-
-systemctl daemon-reload

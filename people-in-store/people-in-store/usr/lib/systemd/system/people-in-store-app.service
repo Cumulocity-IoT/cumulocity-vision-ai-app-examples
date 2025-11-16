@@ -1,0 +1,13 @@
+[Unit]
+Description="People in Store" App
+After=network.target
+
+[Service]
+Type=idle
+Restart=on-failure
+User=tedge
+WorkingDirectory=/usr/local/bin/people-in-store-app
+ExecStart=python people-in-store-app.py
+
+[Install]
+WantedBy=multi-user.target
