@@ -3,6 +3,7 @@ import json
 import os
 import logging
 from datetime import datetime
+from threading import Lock
 import paho.mqtt.client as mqtt
 
 # Define the log file path
@@ -24,13 +25,17 @@ logging.basicConfig(
 MQTT_BROKER = "localhost"
 MQTT_PORT = 1883
 
+PERSON_CLASS = 0
+
 EXIT_THRESHOLD = 30
 
 DURATION_THRESHOLD = 1.0
 
 TRACKED_PEOPLE = {}
 
-EXIT_CACHE = {}
+previous_count = 0
+
+lock = Lock()
 
 def on_connect(client, userdata, flags, rc):
     """Callback function for when the MQTT client connects."""
@@ -43,49 +48,51 @@ def on_connect(client, userdata, flags, rc):
 def on_message(client, userdata, message):
     """Callback function for when a message is received via MQTT."""
     data = json.loads(message.payload.decode())
-    evaluate_state(client, data, message.topic.split('/')[1])
+    parts = message.topic.split("/")
+    device_id = parts[1] if len(parts) > 1 else "unknown"
+
+    with lock:
+        evaluate_state(client, data, device_id)
     
 def evaluate_state(client, data, device_id):
-    global TRACKED_PEOPLE, EXIT_CACHE, EXIT_THRESHOLD
+    global TRACKED_PEOPLE, EXIT_THRESHOLD, previous_count
 
-    people_in_pic = []
-    logging.info('exit ' + str(EXIT_CACHE))
     logging.info('tracked ' + str(TRACKED_PEOPLE))
+
     detections = data['detections']
-    for detection in detections:
-        if detection['tracker_id'] < 0:
-            detections.remove(detection)
-    
-    if len(detections) == 0 and len(TRACKED_PEOPLE) == 0:
+    detected_people = [d for d in detections if d.get('class_id') == PERSON_CLASS]
+    tracker_ids = [d.get("tracker_id") for d in detected_people if isinstance(d.get("tracker_id"), int) and d.get("tracker_id") >= 0]
+
+    if len(tracker_ids) == 0 and len(TRACKED_PEOPLE) == 0:
         return
-    
-    for detection in detections:
-        tracker_id = detection['tracker_id']
-        class_id = detection['class_id']
-        # Check if a person entered
-        # in case of person
-        if class_id == 0:
-            if tracker_id not in TRACKED_PEOPLE.keys():
-                TRACKED_PEOPLE[tracker_id] = { 'enter': data['timestamp']}
-            people_in_pic.append(tracker_id)
-            EXIT_CACHE[tracker_id] = 0
 
-    # Check if someone left
+    # Check for persons who entered
+    for tracker_id in tracker_ids:
+        if tracker_id not in TRACKED_PEOPLE.keys():
+            TRACKED_PEOPLE[tracker_id] = { 'enter': data['timestamp'] }
+        TRACKED_PEOPLE[tracker_id]['timeout'] = 0
+
+    # Check who left and report it
     for_deletion = []
-    for t_people in TRACKED_PEOPLE.keys():
-        if t_people not in people_in_pic:
-            if EXIT_CACHE[t_people] == 0:
-                TRACKED_PEOPLE[t_people]['leave'] = data['timestamp']
-            EXIT_CACHE[t_people] += 1
-    for key, value in EXIT_CACHE.items():
-        if value > EXIT_THRESHOLD:
-            send_measurement(client, TRACKED_PEOPLE[key]['enter'], TRACKED_PEOPLE[key]['leave'], device_id)
-            del TRACKED_PEOPLE[key]
-            for_deletion.append(key)
-    for key in for_deletion:
-        del EXIT_CACHE[key]
+    for tracker_id in TRACKED_PEOPLE.keys():
+        if tracker_id not in tracker_ids:
+            if TRACKED_PEOPLE[tracker_id]['timeout'] == 0:
+                TRACKED_PEOPLE[tracker_id]['leave'] = data['timestamp']
+            TRACKED_PEOPLE[tracker_id]['timeout'] += 1
+    for tracker_id, person in TRACKED_PEOPLE.items():
+        if person['timeout'] > EXIT_THRESHOLD:
+            publish_duration(client, person['enter'], person['leave'], device_id)
+            for_deletion.append(tracker_id)
+    for tracker_id in for_deletion:
+        del TRACKED_PEOPLE[tracker_id]
 
-def send_measurement(client, enter, leave, device_id):
+    # Report counted people (if changed)
+    count = len(TRACKED_PEOPLE)
+    if count != previous_count:
+            previous_count = count
+            publish_count(client, device_id, count, data.get("timestamp"))
+
+def publish_duration(client, enter, leave, device_id):
     dt_enter = datetime.fromisoformat(enter)
     dt_leave = datetime.fromisoformat(leave)
     duration = round(dt_leave.timestamp() - dt_enter.timestamp(), 3)
@@ -96,6 +103,12 @@ def send_measurement(client, enter, leave, device_id):
         "duration": duration
     }
     client.publish(f"te/device/{device_id}///m/duration", json.dumps(measurement))
+
+def publish_count(client, device_id: str, count: int, ts: str | None):
+    measurement = {
+        "count": int(count)
+    }
+    client.publish(f"te/device/{device_id}///m/people_count", json.dumps(measurement))
 
 def main():
     """Main loop to generate and send measurements via MQTT."""

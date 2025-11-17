@@ -1,8 +1,8 @@
-# Time in Store App
+# People in Store App
 
 This demo shows how you can use Vision AI to analyse how long people are in a certain area. The model is trained to detect people and track their movement throughout the FoV.
 
-<img src="../_images/store_duration.jpeg" alt="Time in Store Demo" width="250" />
+<img src="../_images/store_duration.jpeg" alt="People in Store Demo" width="250" />
 
 ## 🤖 Model
 
@@ -18,12 +18,15 @@ For this example the analytics flow has only the camera as a parameter. Ensure t
 
 ### Data of the camera
 
-The AI application will track objects while they are in the FoV. When aperson enters the FoV it will start tracking this person and once it leaves the FoV it will send a measurement with the amount of time this person was tracked.
-There is no logic to "remember" people if they leave the FoV, therefore if you leave the FoV and re-enter it you are tracked as a "new" person again.
+The AI application will track persons while they are in the FoV. When a person enters the FoV the app will start tracking this person and once it leaves the FoV it will send a measurement with the amount of time this person was tracked.
+Furthermore, the app sends measurements reporting the current number of persons in the FoV.
+There is a grace period of 30 frames for persons not detected in the current frame to avoid fluctuations due to missed detections. A person is reported as gone after not being detected throughout such a period.
+Beyond this, there is no logic to "remember" people if they leave the FoV. Therefore, if you leave the FoV and re-enter it later you are tracked as a "new" person again.
 
 | Data point | Explanation | Fragment => Series |
 | --- | --- | --- |
 | **Duration** | The time a person was inside the FoV in the camera (Seconds + Milliseconds as fraction). | duration => duration |
+| **people_count** | The number of persons currently in the FoV. | people_count => people_count |
 
 ### Data of the analytics
 
@@ -54,9 +57,9 @@ In case you modified the script here is a short guide how to build the debian ag
 
     From the directory of this README run the following command:
     ```bash
-    dpkg-deb --build time-in-store
+    dpkg-deb --build people-in-store
     ```
-    This will create a `time-in-store.deb` file in the current directory.
+    This will create a `people-in-store.deb` file in the current directory.
 
 ## ☁️ App Installation
 
